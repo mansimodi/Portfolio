@@ -30,7 +30,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           rel="noopener noreferrer"
           className="pointer-events-auto group transition-transform hover:scale-[1.01]"
         >
-          <h1 className="font-sans text-5xl font-light tracking-tighter text-white sm:text-7xl md:text-8xl uppercase">
+          <h1 className="font-sans text-4xl font-light tracking-tighter text-white sm:text-6xl md:text-7xl uppercase">
             Mansi <span className="italic text-white">Modi</span>
           </h1>
         </a>

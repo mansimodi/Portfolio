@@ -9,7 +9,7 @@ const SKILLS = [
 
 export default function Skills() {
   return (
-    <section className="relative z-20 bg-background px-4 py-20 md:px-24">
+    <section className="relative z-20 bg-background px-4 py-8 md:px-24">
       <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-4">
         {SKILLS.map((set, i) => (
           <motion.div

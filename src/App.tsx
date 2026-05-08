@@ -57,7 +57,7 @@ export default function App() {
       <Awards />
       <Projects />
 
-      <footer className="border-t border-white/5 bg-background px-4 py-24 md:px-24">
+      <footer className="border-t border-white/5 bg-background px-4 py-12 md:px-24">
         <div className="flex flex-col items-center justify-between gap-12 md:flex-row">
           <div className="text-center md:text-left">
             <a 

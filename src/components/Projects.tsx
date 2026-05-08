@@ -51,7 +51,7 @@ const PROJECTS = [
 
 export default function Projects() {
   return (
-    <section className="relative z-20 bg-background px-4 py-20 md:px-24">
+    <section className="relative z-20 bg-background px-4 py-8 md:px-24">
       <div className="mb-24 flex flex-col items-start justify-between border-b border-white/10 pb-12 md:flex-row md:items-end">
         <div>
           <p className="font-mono text-xs uppercase tracking-widest text-white/40 mb-4">Highest Impact Projects</p>

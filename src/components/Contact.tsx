@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, Phone, Linkedin, MessageSquare } from 'lucide-react';
+import { Mail, Linkedin } from 'lucide-react';
 
 export default function Contact() {
   const contactInfo = [
@@ -10,12 +10,6 @@ export default function Contact() {
       link: "mailto:mansimodi90@gmail.com"
     },
     {
-      icon: <Phone className="h-5 w-5" />,
-      label: "Phone",
-      value: "(408) 917-8064",
-      link: "tel:+14089178064"
-    },
-    {
       icon: <Linkedin className="h-5 w-5" />,
       label: "LinkedIn",
       value: "linkedin.com/in/mansimodi",
@@ -24,14 +18,14 @@ export default function Contact() {
   ];
 
   return (
-    <section className="relative z-20 bg-background px-4 py-20 md:px-24">
-      <div className="mx-auto max-w-5xl">
+    <section className="relative z-20 bg-background px-4 py-12 md:px-24">
+      <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex items-center gap-4">
           <div className="h-[1px] w-12 bg-white/20" />
           <p className="font-mono text-xs uppercase tracking-widest text-white/40">Connect</p>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr]">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -51,25 +45,27 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-col justify-center gap-4"
+            className="flex flex-col justify-center"
           >
-            {contactInfo.map((info) => (
-              <a
-                key={info.label}
-                href={info.link}
-                target={info.label === "Email" || info.label === "Phone" ? "_self" : "_blank"}
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl border border-white/5 bg-white/[0.02] p-4 transition-all hover:bg-white/5 hover:border-white/10"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-white/40 transition-colors group-hover:bg-white group-hover:text-black">
-                  {info.icon}
-                </div>
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-white/20">{info.label}</p>
-                  <p className="font-sans text-base text-white/80 transition-colors group-hover:text-white">{info.value}</p>
-                </div>
-              </a>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {contactInfo.map((info) => (
+                <a
+                  key={info.label}
+                  href={info.link}
+                  target={info.label === "Email" ? "_self" : "_blank"}
+                  rel="noopener noreferrer"
+                  className="group flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-4 rounded-xl border border-white/5 bg-white/[0.02] p-6 transition-all hover:bg-white/5 hover:border-white/10"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 text-white/40 transition-colors group-hover:bg-white group-hover:text-black">
+                    {info.icon}
+                  </div>
+                  <div className="min-w-0 text-center sm:text-left">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-white/20 whitespace-nowrap">{info.label}</p>
+                    <p className="font-sans text-base text-white/80 transition-colors group-hover:text-white whitespace-nowrap">{info.value}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

@@ -16,7 +16,7 @@ const AWARDS = [
 
 export default function Awards() {
   return (
-    <section className="relative z-20 bg-background px-4 py-20 md:px-24">
+    <section className="relative z-20 bg-background px-4 py-8 md:px-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 flex items-center gap-4">
           <div className="h-[1px] w-12 bg-white/20" />
