@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import TextReveal from './TextReveal';
 
 export default function Bio() {
   return (
@@ -8,18 +9,20 @@ export default function Bio() {
           <div className="h-[1px] w-12 bg-white/20" />
           <p className="font-mono text-xs uppercase tracking-widest text-white/40">Introduction</p>
         </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
+
+        <TextReveal className="space-y-8">
           <h2 className="font-sans text-2xl font-light leading-snug tracking-tight text-white/90 sm:text-3xl md:text-4xl lg:text-5xl">
             I build data systems that <span className="italic">make hard decisions easier.</span>
           </h2>
-          
+        </TextReveal>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+          viewport={{ once: true }}
+          className="mt-8"
+        >
           <div className="grid gap-12 md:grid-cols-2">
             <div className="space-y-6">
               <p className="font-sans text-lg font-light leading-relaxed text-white/60">

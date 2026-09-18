@@ -5,8 +5,8 @@ interface OverlayProps {
 }
 
 export default function Overlay({ scrollYProgress }: OverlayProps) {
-  // Section 1: My Name (0% - 20%)
-  const s1Opacity = useTransform(scrollYProgress, [0, 0.1, 0.15, 0.2], [0, 1, 1, 0]);
+  // Section 1: My Name (visible on load, fades out by 20%)
+  const s1Opacity = useTransform(scrollYProgress, [0, 0.15, 0.2], [1, 1, 0]);
   const s1Scale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1]);
   
   // Section 2: I build digital experiences (25% - 45%)

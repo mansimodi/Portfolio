@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Award, Star } from 'lucide-react';
+import TextReveal from './TextReveal';
 
 const AWARDS = [
   {
@@ -23,9 +24,11 @@ export default function Awards() {
           <p className="font-mono text-xs uppercase tracking-widest text-white/40">Recognition</p>
         </div>
 
-        <h2 className="mb-16 font-sans text-3xl font-light tracking-tighter text-white/90 sm:text-4xl md:text-5xl">
-          Honors & <span className="italic text-white/50">Awards</span>
-        </h2>
+        <TextReveal className="mb-16">
+          <h2 className="font-sans text-3xl font-light tracking-tighter text-white/90 sm:text-4xl md:text-5xl">
+            Honors & <span className="italic text-white/50">Awards</span>
+          </h2>
+        </TextReveal>
 
         <div className="grid gap-8 md:grid-cols-2">
           {AWARDS.map((award, index) => (

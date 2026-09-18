@@ -1,11 +1,14 @@
 import { motion, useScroll, useSpring } from 'motion/react';
+import { useLenis } from './hooks/useLenis';
 import ScrollyCanvas from './components/ScrollyCanvas';
 import Overlay from './components/Overlay';
 import Bio from './components/Bio';
+import Impact from './components/Impact';
 import Contact from './components/Contact';
 import Awards from './components/Awards';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+import MagneticLink from './components/MagneticLink';
 
 function Navigation() {
   return (
@@ -20,16 +23,18 @@ function Navigation() {
             <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-white transition-all group-hover:w-full" />
           </button>
         ))}
-        <a href="https://linkedin.com/in/mansimodi" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden font-sans text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors">
+        <MagneticLink href="https://linkedin.com/in/mansimodi" target="_blank" rel="noopener noreferrer" strength={0.4} className="group relative overflow-hidden font-sans text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors inline-block">
           LinkedIn
           <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-white transition-all group-hover:w-full" />
-        </a>
+        </MagneticLink>
       </div>
     </nav>
   );
 }
 
 export default function App() {
+  useLenis();
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -39,8 +44,11 @@ export default function App() {
 
   return (
     <main className="relative bg-background font-sans selection:bg-black selection:text-white">
+      {/* Subtle film-grain texture — adds tactile depth without gradients or glow */}
+      <div className="grain-overlay" aria-hidden="true" />
+
       <Navigation />
-      
+
       {/* Scroll Progress Indicator */}
       <motion.div
         className="fixed top-0 left-0 right-0 z-[70] h-[2px] bg-black origin-left"
@@ -52,6 +60,7 @@ export default function App() {
       </div>
 
       <Bio />
+      <Impact />
       <Contact />
       <Skills />
       <Awards />
@@ -60,16 +69,17 @@ export default function App() {
       <footer className="border-t border-white/5 bg-background px-4 py-12 md:px-24">
         <div className="flex flex-col items-center justify-between gap-12 md:flex-row">
           <div className="text-center md:text-left">
-            <a 
-              href="https://linkedin.com/in/mansimodi" 
-              target="_blank" 
+            <MagneticLink
+              href="https://linkedin.com/in/mansimodi"
+              target="_blank"
               rel="noopener noreferrer"
-              className="group transition-transform hover:scale-[1.01] inline-block"
+              strength={0.2}
+              className="group inline-block"
             >
               <h2 className="font-sans text-3xl font-light tracking-tighter md:text-4xl mb-4 text-white">
                 Mansi <span className="italic text-white">Modi</span>
               </h2>
-            </a>
+            </MagneticLink>
             <p className="font-mono text-[10px] uppercase tracking-[0.5em] text-white/40 mb-2">
               Lead Data Scientist // San Francisco Bay Area
             </p>
@@ -77,9 +87,9 @@ export default function App() {
               © 2026 All Rights Reserved
             </p>
           </div>
-          
+
           <div className="flex gap-8">
-            <a href="https://linkedin.com/in/mansimodi" className="font-sans text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors">LinkedIn</a>
+            <MagneticLink href="https://linkedin.com/in/mansimodi" strength={0.4} className="font-sans text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors">LinkedIn</MagneticLink>
           </div>
         </div>
       </footer>

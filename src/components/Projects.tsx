@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ExternalLink, ArrowUpRight } from 'lucide-react';
+import TextReveal from './TextReveal';
 
 const PROJECTS = [
   {
@@ -55,9 +56,11 @@ export default function Projects() {
       <div className="mb-24 flex flex-col items-start justify-between border-b border-white/10 pb-12 md:flex-row md:items-end">
         <div>
           <p className="font-mono text-xs uppercase tracking-widest text-white/40 mb-4">Highest Impact Projects</p>
-          <h2 className="font-sans text-3xl font-light tracking-tighter md:text-5xl text-white">
-            Selected <span className="italic text-white/50">Milestones</span>
-          </h2>
+          <TextReveal>
+            <h2 className="font-sans text-3xl font-light tracking-tighter md:text-5xl text-white">
+              Selected <span className="italic text-white/50">Milestones</span>
+            </h2>
+          </TextReveal>
         </div>
         <div className="mt-8 md:mt-0">
           <p className="max-w-xs font-sans text-sm font-light leading-relaxed text-white/40">

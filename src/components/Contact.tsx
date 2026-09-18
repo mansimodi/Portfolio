@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Mail, Linkedin } from 'lucide-react';
+import TextReveal from './TextReveal';
 
 export default function Contact() {
   const contactInfo = [
@@ -26,19 +27,22 @@ export default function Contact() {
         </div>
 
         <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr]">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-sans text-3xl font-light tracking-tighter text-white/90 sm:text-4xl md:text-5xl">
-              Let's <span className="italic">connect</span>
-            </h2>
-            <p className="mt-8 max-w-md font-sans text-lg font-light leading-relaxed text-white/60">
+          <div>
+            <TextReveal>
+              <h2 className="font-sans text-3xl font-light tracking-tighter text-white/90 sm:text-4xl md:text-5xl">
+                Let's <span className="italic">connect</span>
+              </h2>
+            </TextReveal>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              viewport={{ once: true }}
+              className="mt-8 max-w-md font-sans text-lg font-light leading-relaxed text-white/60"
+            >
               I'm always open to discussing data strategy, AI innovation, or potential collaborations. Whether you have a specific project in mind or just want to say hello, feel free to reach out.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
