@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import MagneticLink from './MagneticLink';
 import ThemeToggle from './ThemeToggle';
 
 const NAV_ITEMS = [
@@ -10,8 +9,9 @@ const NAV_ITEMS = [
   { key: 'c', label: 'Contact', to: '/contact' },
 ] as const;
 
-/** Bracketed single-key shortcuts, à la a field log's index tabs — press the
- * letter to jump straight to that page, same as clicking its pill. */
+/** Keyboard shortcuts for the nav — press the letter to jump straight to
+ * that page. Kept invisible (no on-screen bracket notation) so the nav reads
+ * as plain labeled tabs rather than an index-tab affordance. */
 function useNavShortcuts() {
   const navigate = useNavigate();
 
@@ -41,22 +41,21 @@ export default function Navigation() {
           M. Modi <span className="hidden sm:inline">// 2026</span>
         </Link>
       </div>
-      <div className="flex items-center gap-3 sm:gap-6 md:gap-10 pointer-events-auto">
+      <div className="flex items-center gap-4 sm:gap-6 md:gap-10 pointer-events-auto">
         {NAV_ITEMS.map((item) => (
           <NavLink
             key={item.label}
             to={item.to}
             end={item.to === '/'}
             className={({ isActive }) =>
-              `group relative overflow-hidden whitespace-nowrap font-sans text-xs uppercase tracking-widest transition-colors ${
+              `group relative overflow-hidden whitespace-nowrap font-sans text-xs uppercase tracking-wide sm:tracking-widest transition-colors ${
                 isActive ? 'text-foreground' : 'text-muted hover:text-foreground'
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <span className="font-mono text-accent/70 sm:mr-1">[{item.key}]</span>
-                <span className="hidden sm:inline">{item.label}</span>
+                {item.label}
                 <span
                   className={`absolute bottom-0 left-0 h-px bg-accent transition-all group-hover:w-full ${
                     isActive ? 'w-full' : 'w-0'
@@ -66,16 +65,6 @@ export default function Navigation() {
             )}
           </NavLink>
         ))}
-        <MagneticLink
-          href="https://linkedin.com/in/mansimodi"
-          target="_blank"
-          rel="noopener noreferrer"
-          strength={0.4}
-          className="group relative hidden overflow-hidden font-sans text-xs uppercase tracking-widest text-muted hover:text-foreground transition-colors sm:inline-block"
-        >
-          LinkedIn
-          <span className="absolute bottom-0 left-0 h-px w-0 bg-accent transition-all group-hover:w-full" />
-        </MagneticLink>
         <ThemeToggle />
       </div>
     </nav>

@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Mail, Linkedin, FileDown } from 'lucide-react';
 import TextReveal from './TextReveal';
 import SectionLabel from './SectionLabel';
+import InquiryForm from './InquiryForm';
 
 export default function Contact() {
   const contactInfo = [
@@ -103,6 +104,16 @@ export default function Contact() {
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+          viewport={{ once: true }}
+          className="mt-16 max-w-xl"
+        >
+          <InquiryForm />
+        </motion.div>
       </div>
     </section>
   );
