@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Local AI coding tool state — not part of the site
+.claude/
+.cursor/
+.impeccable/

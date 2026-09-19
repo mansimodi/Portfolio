@@ -1,46 +1,129 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Libre+Franklin:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0a0e17;
-  --color-foreground: #ffffff;
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Bathymetric Field Log — deep work zone (default theme) */
+  --color-background: #051822;
+  --color-surface: #0a2332;
+  --color-surface-elevated: #0f3044;
+  --color-foreground: #e8f1f5;
+  --color-muted: #8ba3b0;
+  --color-contour: #1e4d63;
+  --color-accent: #2a9d8f;
+  --color-accent-dim: #1f7369;
+
+  /* Sunlit surface — life zone (fixed regardless of light/dark toggle) */
+  --color-life: #f4ede4;
+  --color-life-surface: #fffbf7;
+  --color-life-foreground: #1a2e38;
+  --color-life-muted: #5c7280;
+  --color-life-accent: #e07a5f;
+  --color-life-accent-soft: #d4a574;
+
+  --font-sans: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', ui-serif, Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Light mode — "Surface Log". Same dive-log brand, read in daylight:
+   warm paper background, ink-navy type, a deeper teal accent for AA contrast. */
+:root[data-theme='light'] {
+  --color-background: #f7f3ec;
+  --color-surface: #eee6d7;
+  --color-surface-elevated: #ffffff;
+  --color-foreground: #16242c;
+  --color-muted: #5c6f78;
+  --color-contour: #c9b8a0;
+  --color-accent: #1f7369;
+  --color-accent-dim: #2a9d8f;
+  color-scheme: light;
+}
+
+:root {
+  color-scheme: dark;
 }
 
 @layer base {
-  body {
-    @apply bg-background text-foreground antialiased selection:bg-white selection:text-black;
-    background-color: #0a0e17; /* Explicit fallback */
+  html {
+    scroll-behavior: smooth;
   }
 
-  /* Custom scrollbar for deep dark theme */
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0e17;
+    background: var(--color-background);
   }
   ::-webkit-scrollbar-thumb {
-    background: #333;
+    background: var(--color-contour);
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #444;
+    background: var(--color-accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .contour-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-contour) 8%,
+      var(--color-accent) 25%,
+      var(--color-contour) 42%,
+      transparent 50%,
+      var(--color-contour) 58%,
+      var(--color-accent) 75%,
+      var(--color-contour) 92%,
+      transparent 100%
+    );
+    opacity: 0.6;
+  }
+
+  .depth-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.35em] text-accent;
+  }
+
+  .surface-transition {
+    background: linear-gradient(180deg, #0a2332 0%, #1a3a4a 35%, #f4ede4 100%);
   }
 }
 
 .glass {
-  @apply backdrop-blur-md bg-white/5 border border-white/10;
+  @apply border border-contour/40 bg-surface-elevated/60 backdrop-blur-md;
 }
 
-/* Fixed film-grain texture: cheap tactile depth, no gradients or glow.
-   Pure SVG feTurbulence, nudged every few frames for a subtle "alive" feel. */
 .grain-overlay {
   position: fixed;
   inset: 0;
   z-index: 45;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.025;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
@@ -55,8 +138,47 @@
   100% { transform: translate(0, 0); }
 }
 
+/* Dive Buddy mascot */
+@keyframes dive-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes bubble-rise {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  15% { opacity: 0.8; }
+  100% { transform: translateY(-46px) scale(1.1); opacity: 0; }
+}
+
+@keyframes speech-pop {
+  0% { opacity: 0; transform: translateY(6px) scale(0.94); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dive-buddy-float {
+  animation: dive-bob 4.5s ease-in-out infinite;
+}
+
+.dive-buddy-bubble {
+  animation: bubble-rise 3s ease-in infinite;
+}
+
+.dive-buddy-speech {
+  animation: speech-pop 0.4s ease-out forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .grain-overlay {
+    animation: none;
+  }
+
+  .dive-buddy-float,
+  .dive-buddy-bubble,
+  .dive-buddy-speech {
     animation: none;
   }
 }

@@ -69,7 +69,7 @@ export default function ScrollyCanvas({ frameCount }: ScrollyCanvasProps) {
       if (!img || !img.complete) return;
 
       // Object-fit: cover logic with subtle zoom to crop watermarks
-      const zoom = 1.08; 
+      const zoom = 1.08;
       const canvasAspectRatio = canvas.width / canvas.height;
       const imageAspectRatio = img.width / img.height;
       let drawWidth, drawHeight, offsetX, offsetY;
@@ -114,17 +114,16 @@ export default function ScrollyCanvas({ frameCount }: ScrollyCanvasProps) {
   return (
     <div ref={containerRef} className="relative h-[220vh] bg-background">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Loading Overlay */}
         {!isLoaded && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-background">
-            <div className="mb-4 h-[1px] w-48 bg-white/10">
-              <div 
-                className="h-full bg-white transition-all duration-300"
+            <div className="mb-4 h-px w-48 bg-contour/40">
+              <div
+                className="h-full bg-accent transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
-              Initializing Experience {Math.round(progress)}%
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+              Loading field sequence {Math.round(progress)}%
             </p>
           </div>
         )}

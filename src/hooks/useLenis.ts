@@ -2,6 +2,14 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { ScrollTrigger } from '../lib/gsap';
 
+/** Module-level handle so other parts of the app (route-change scroll reset)
+ * can talk to the single Lenis instance without prop-drilling or context. */
+let activeLenis: Lenis | null = null;
+
+export function getLenis(): Lenis | null {
+  return activeLenis;
+}
+
 /**
  * Drives the whole page with Lenis's inertia-smoothed scroll and keeps GSAP's
  * ScrollTrigger in sync every frame. Native `scroll` events still fire (Lenis
@@ -16,6 +24,7 @@ export function useLenis() {
       easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
     });
+    activeLenis = lenis;
 
     let rafId: number;
     const raf = (time: number) => {
@@ -28,6 +37,7 @@ export function useLenis() {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      if (activeLenis === lenis) activeLenis = null;
     };
   }, []);
 }
