@@ -26,7 +26,7 @@ export default function Contact() {
       value: 'Download PDF',
       link: '/resume.pdf',
       primary: false,
-      downloadName: 'Mansi-Modi-Resume.pdf',
+      downloadName: 'Mansi Modi Resume.pdf',
     },
   ];
 
@@ -62,7 +62,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="flex flex-col justify-center"
           >
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4">
               {contactInfo.map((info) => (
                 <a
                   key={info.label}
@@ -85,12 +85,12 @@ export default function Contact() {
                   >
                     {info.icon}
                   </div>
-                  <div className="min-w-0 text-center sm:text-left">
+                  <div className="min-w-0 flex-1 text-center sm:text-left">
                     <p className="font-mono text-[10px] uppercase tracking-widest text-muted">
                       {info.label}
                     </p>
                     <p
-                      className={`font-sans text-base transition-colors ${
+                      className={`break-words font-sans text-base transition-colors ${
                         info.primary
                           ? 'text-foreground group-hover:text-accent'
                           : 'text-foreground/80 group-hover:text-foreground'
