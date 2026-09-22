@@ -6,14 +6,13 @@ interface Stat {
   prefix?: string;
   suffix?: string;
   label: string;
-  depth: string;
 }
 
 const STATS: Stat[] = [
-  { value: 100, suffix: 'K+', label: 'Transcripts analyzed weekly', depth: '−340m' },
-  { value: 10, suffix: '%', label: 'Higher chat resolve rate', depth: '−280m' },
-  { value: 75, suffix: '%', label: 'Forecast accuracy improvement', depth: '−220m' },
-  { value: 2, prefix: '$', suffix: 'M', label: 'Saved annually via routing fix', depth: '−160m' },
+  { value: 100, suffix: 'K+', label: 'Transcripts analyzed weekly' },
+  { value: 10, suffix: '%', label: 'Higher chat resolve rate' },
+  { value: 75, suffix: '%', label: 'Forecast accuracy improvement' },
+  { value: 2, prefix: '$', suffix: 'M', label: 'Saved annually via routing fix' },
 ];
 
 export default function Impact() {
@@ -55,9 +54,6 @@ export default function Impact() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((stat) => (
             <div key={stat.label} className="border-l border-contour/50 pl-6 text-center sm:text-left">
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-accent/70">
-                {stat.depth}
-              </p>
               <p className="font-serif text-4xl font-light tracking-tight text-foreground sm:text-5xl">
                 {stat.prefix}
                 <span data-count={stat.value}>0</span>

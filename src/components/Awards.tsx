@@ -20,9 +20,9 @@ const AWARDS = [
 
 export default function Awards() {
   return (
-    <section className="relative z-20 bg-background px-4 py-16 md:px-24">
+    <section id="recognition" className="relative z-20 scroll-mt-24 bg-background px-4 py-16 md:px-24">
       <div className="mx-auto max-w-5xl">
-        <SectionLabel depth="−140m" label="Recognition" />
+        <SectionLabel id="recognition" label="Recognition" />
 
         <TextReveal className="mb-16">
           <h2 className="font-serif text-3xl font-light tracking-tight text-foreground sm:text-4xl md:text-5xl">

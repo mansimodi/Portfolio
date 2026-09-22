@@ -33,7 +33,7 @@ export default function Contact() {
   return (
     <section id="contact" className="relative z-20 scroll-mt-24 bg-surface px-4 py-16 md:px-24 md:py-20">
       <div className="mx-auto max-w-7xl">
-        <SectionLabel depth="Shore" label="Connect" />
+        <SectionLabel id="contact" label="Connect" />
 
         <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr]">
           <div>

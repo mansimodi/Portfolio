@@ -4,9 +4,9 @@ import SectionLabel from './SectionLabel';
 
 export default function Bio() {
   return (
-    <section className="relative z-20 bg-background px-4 py-16 md:px-24 md:py-20">
+    <section id="introduction" className="relative z-20 scroll-mt-24 bg-background px-4 py-16 md:px-24 md:py-20">
       <div className="mx-auto max-w-5xl">
-        <SectionLabel depth="−120m" label="Introduction" />
+        <SectionLabel id="introduction" label="Introduction" />
 
         <TextReveal className="space-y-8">
           <h2 className="font-serif text-2xl font-light leading-snug tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">

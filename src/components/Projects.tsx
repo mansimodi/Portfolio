@@ -53,10 +53,10 @@ export const PROJECTS = [
 
 export default function Projects() {
   return (
-    <section className="relative z-20 bg-background px-4 py-16 md:px-24">
+    <section id="projects" className="relative z-20 scroll-mt-24 bg-background px-4 py-16 md:px-24">
       <div className="mb-16 flex flex-col items-start justify-between border-b border-contour/40 pb-12 md:flex-row md:items-end">
         <div>
-          <SectionLabel depth="−200m" label="Highest Impact Projects" />
+          <SectionLabel id="projects" label="Highest Impact Projects" />
           <TextReveal>
             <h2 className="font-serif text-3xl font-light tracking-tight text-foreground md:text-5xl">
               Selected <span className="italic text-muted">Milestones</span>

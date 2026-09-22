@@ -22,9 +22,9 @@ const SKILLS = [
 
 export default function Skills() {
   return (
-    <section className="relative z-20 border-y border-contour/30 bg-surface px-4 py-16 md:px-24">
+    <section id="toolkit" className="relative z-20 scroll-mt-24 border-y border-contour/30 bg-surface px-4 py-16 md:px-24">
       <div className="mx-auto max-w-6xl">
-        <SectionLabel depth="−180m" label="Toolkit" />
+        <SectionLabel id="toolkit" label="Toolkit" />
         <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-4">
           {SKILLS.map((set, i) => (
             <motion.div

@@ -52,7 +52,7 @@ export default function Life() {
 
       <div className="bg-life px-4 py-16 md:px-24 md:py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionLabel depth="Surface" label="Beyond Work" variant="surface" />
+          <SectionLabel id="life" label="Beyond Work" variant="surface" />
 
           <TextReveal className="mb-8">
             <h2 className="font-serif text-3xl font-light tracking-tight text-life-foreground sm:text-4xl md:text-5xl">
