@@ -98,8 +98,8 @@ export const TALKS: Talk[] = [
     dates: 'Oct 22–24, 2026',
     format: 'Virtual session',
     minutes: 18,
-    title: 'How to Navigate Learning AI in an Ever-Evolving World',
-    subtitle: 'Make AI your friend, not your enemy — and use it wisely.',
+    title: 'Get on the AI Train',
+    subtitle: 'The AI train is already moving.',
     summary:
       'A practical tour of the AI tools anyone can use today — for analysis, code, slides, websites, video, and music — plus one prompt formula that works in all of them, how to pick the right tool, and how to keep up without burning out.',
     intro:

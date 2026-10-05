@@ -32,16 +32,16 @@ export const HOBBIES = [
     tag: 'Craft',
     description:
       'Slow, iterative work with your hands. There is something grounding about building one loop at a time.',
-    image:
-      'https://images.unsplash.com/photo-1582794543139-81624465784d?q=80&w=1200&auto=format&fit=crop',
+    image: '/life/crochet.jpg',
+    alt: 'Mansi smiling in a chunky mustard knit beanie on a windy sea-cliff walk',
   },
   {
     title: 'Painting',
     tag: 'Create',
     description:
       'Color, composition, and patience. A different kind of problem-solving — less precise, more expressive.',
-    image:
-      'https://images.unsplash.com/photo-1460661419841-af9598a096b5?q=80&w=1200&auto=format&fit=crop',
+    image: '/life/painting.jpg',
+    alt: "Mansi's acrylic painting of the northern lights over snowy mountains and a lake",
   },
 ];
 
@@ -88,7 +88,7 @@ export default function Life() {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={hobby.image}
-                    alt={hobby.title}
+                    alt={'alt' in hobby ? hobby.alt : hobby.title}
                     referrerPolicy="no-referrer"
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
