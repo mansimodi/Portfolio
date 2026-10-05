@@ -5,6 +5,7 @@ import ThemeToggle from './ThemeToggle';
 const NAV_ITEMS = [
   { key: 'h', label: 'Home', to: '/' },
   { key: 'w', label: 'Work', to: '/work' },
+  { key: 's', label: 'Speaking', to: '/speaking' },
   { key: 'l', label: 'Life', to: '/life' },
   { key: 'c', label: 'Contact', to: '/contact' },
 ] as const;
@@ -59,19 +60,21 @@ export default function Navigation() {
           : 'pointer-events-none border-transparent bg-transparent py-4 sm:py-6 md:py-8'
       }`}
     >
-      <div className="pointer-events-auto">
+      {/* The wordmark yields on phones so five nav items + theme toggle fit
+          in one row; the Home tab covers the same destination there. */}
+      <div className="pointer-events-auto hidden sm:block">
         <Link to="/" className="depth-label whitespace-nowrap text-muted hover:text-foreground transition-colors">
           M. Modi <span className="hidden sm:inline">// 2026</span>
         </Link>
       </div>
-      <div className="flex items-center gap-4 sm:gap-6 md:gap-10 pointer-events-auto">
+      <div className="flex w-full items-center justify-between gap-3 sm:w-auto sm:justify-normal sm:gap-6 md:gap-10 pointer-events-auto">
         {NAV_ITEMS.map((item) => (
           <NavLink
             key={item.label}
             to={item.to}
             end={item.to === '/'}
             className={({ isActive }) =>
-              `group relative overflow-hidden whitespace-nowrap font-sans text-xs uppercase tracking-wide sm:tracking-widest transition-colors ${
+              `group relative overflow-hidden whitespace-nowrap font-sans text-[11px] uppercase tracking-wide sm:text-xs sm:tracking-widest transition-colors ${
                 isActive ? 'text-foreground' : 'text-muted hover:text-foreground'
               }`
             }

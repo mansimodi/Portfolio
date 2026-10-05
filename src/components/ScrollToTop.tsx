@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getLenis } from '../hooks/useLenis';
+import { getLenis, navOffsetFor } from '../hooks/useLenis';
 
 /** Real routed pages need what anchor-scrolling gave us for free: landing at
  * the top of the new page — or, when a section pill link (or a shared
@@ -19,7 +19,7 @@ export default function ScrollToTop() {
         const target = document.getElementById(id);
         if (!target) return false;
         if (lenis) {
-          lenis.scrollTo(target, { offset: -96, immediate: true });
+          lenis.scrollTo(target, { offset: navOffsetFor(target), immediate: true });
         } else {
           target.scrollIntoView({ block: 'start' });
         }

@@ -10,6 +10,14 @@ export interface TalkToolCategory {
   tools: TalkTool[];
 }
 
+/** Categories bundled by the kind of work they help with, so the list reads as
+ * three short shelves instead of one long wall of names. */
+export interface TalkToolGroup {
+  group: string;
+  blurb: string;
+  categories: TalkToolCategory[];
+}
+
 export interface Talk {
   slug: string;
   event: string;
@@ -18,15 +26,17 @@ export interface Talk {
   minutes: number;
   title: string;
   subtitle: string;
-  /** Card copy on the Work page. */
+  /** Card copy on the Speaking page. */
   summary: string;
-  takeaways: string[];
-  whyDifferent: { title: string; body: string }[];
-  agenda: { title: string; body: string }[];
+  /** Opening paragraph on the talk page. */
+  intro: string;
   formula: { letter: string; title: string; body: string; example: string }[];
-  toolkit: TalkToolCategory[];
+  promptTips: { title: string; body: string }[];
   startHere: string;
+  toolkit: TalkToolGroup[];
+  wiselyIntro: string;
   rules: { title: string; body: string }[];
+  demoSteps: string[];
   demoPrompt: string;
   followUps: string[];
 }
@@ -37,10 +47,10 @@ You are a senior web designer, front-end developer, and career storyteller. You 
 CONTEXT
 About me:
 - Name: [Your name]
-- Title / what I do: [e.g. Lead Data Scientist, Product Designer, Freelance Photographer]
+- Title / what I do: [e.g. Data Analyst, Product Designer, Marketing Manager, Teacher]
 - Location: [City, or "Remote"]
 - Experience: [years, industries, notable companies]
-- One sentence on what makes me different: [e.g. "I turn messy customer data into decisions leadership acts on"]
+- One sentence on what makes me different: [e.g. "I turn complicated information into clear decisions"]
 
 Who will visit and what I want them to do:
 - Visitors: [e.g. hiring managers, potential clients, conference attendees]
@@ -50,7 +60,7 @@ My work (3–5 highlights). For each one:
 - Name: [project]
 - Problem: [what was broken or needed]
 - What I did: [your actions and tools]
-- Result: [numbers if you have them, e.g. "saved $2M a year", "cut response time 15%"]
+- Result: [numbers if you have them, e.g. "cut report time from 2 days to 2 hours", "grew sign-ups 20%"]
 
 Everything else:
 - Skills and tools: [list]
@@ -92,55 +102,8 @@ export const TALKS: Talk[] = [
     subtitle: 'Make AI your friend, not your enemy — and use it wisely.',
     summary:
       'A practical tour of the AI tools anyone can use today — for analysis, code, slides, websites, video, and music — plus one prompt formula that works in all of them, how to pick the right tool, and how to keep up without burning out.',
-    takeaways: [
-      'One prompt formula — Role, Context, Task, Output — that gets better answers from every AI tool, from chatbots to video and music generators.',
-      'A short, honest list of the tools I would actually recommend for each job, and a simple test to choose between them.',
-      'The rules I learned using AI on sensitive customer data at AT&T, and a 30-day plan to get genuinely good at this.',
-    ],
-    whyDifferent: [
-      {
-        title: 'From practice, not hype',
-        body: 'Eight years as a data scientist at AT&T, using AI on real customer data where getting it wrong was not an option.',
-      },
-      {
-        title: 'A skill, not a list',
-        body: 'Tool lists go stale in a month. The formula you learn here works in whatever launches next.',
-      },
-      {
-        title: 'Shown, not told',
-        body: 'Real outputs side by side — including the bad ones — and a live build of this very website.',
-      },
-      {
-        title: 'Yours to keep',
-        body: 'Everything on this page, including the full website prompt, is free to copy and reuse.',
-      },
-    ],
-    agenda: [
-      {
-        title: 'The big three chatbots',
-        body: 'Claude, ChatGPT, and Gemini — what each is good at, and the three-model test for choosing.',
-      },
-      {
-        title: 'The prompt formula',
-        body: 'Role, Context, Task, Output, with a before-and-after demo and how to iterate without starting over.',
-      },
-      {
-        title: 'Live demo: this website',
-        body: 'Building a portfolio site with Claude, using the exact prompt below.',
-      },
-      {
-        title: 'Creating with AI',
-        body: 'Video and music generation, plus the toolkit for analysis, slides, websites, and automation.',
-      },
-      {
-        title: 'The real-world part',
-        body: 'What analyzing customer chats at AT&T taught me about using AI safely: mask, classify, count, verify.',
-      },
-      {
-        title: 'Keep up without burning out',
-        body: 'A 30-day plan to master one tool, and a weekly habit for staying current.',
-      },
-    ],
+    intro:
+      "This page is the companion to my session. It is built from eight years as a data scientist at AT&T, where I used AI on real customer data. Start at the top, or jump straight to the part you need.",
     formula: [
       {
         letter: 'R',
@@ -157,7 +120,7 @@ export const TALKS: Talk[] = [
       {
         letter: 'T',
         title: 'Task',
-        body: 'List exactly what you want, numbered — so you can say "redo #3".',
+        body: 'List exactly what you want, numbered, so you can say "redo #3".',
         example: '"(1) Three venues. (2) A one-day agenda. (3) What could go wrong."',
       },
       {
@@ -167,102 +130,136 @@ export const TALKS: Talk[] = [
         example: '"A comparison table, then the agenda as bullet points."',
       },
     ],
-    toolkit: [
+    promptTips: [
       {
-        category: 'Think & write',
-        tools: [
-          { name: 'Claude', url: 'https://claude.ai', bestFor: 'Long documents, careful reasoning, writing in your voice' },
-          { name: 'ChatGPT', url: 'https://chatgpt.com', bestFor: 'All-rounder with images, voice, and data analysis' },
-          { name: 'Gemini', url: 'https://gemini.google.com', bestFor: 'Built into Gmail, Docs, and the rest of Google Workspace' },
-          { name: 'Microsoft Copilot', url: 'https://copilot.microsoft.com', bestFor: 'Word, Outlook, and Teams at Microsoft workplaces' },
-        ],
+        title: 'Let it interview you',
+        body: 'End any prompt with "Before you answer, ask me any questions you need." It fills in the context you forgot.',
       },
       {
-        category: 'Research & learn',
-        tools: [
-          { name: 'NotebookLM', url: 'https://notebooklm.google.com', bestFor: 'Answers only from your own documents, with citations' },
-          { name: 'Perplexity', url: 'https://www.perplexity.ai', bestFor: 'Web search that shows where every answer came from' },
-        ],
+        title: 'Run the three-model test',
+        body: 'Paste the same prompt into two or three tools. Check which one followed every instruction, was accurate, and added something useful.',
       },
       {
-        category: 'Analyze data',
-        tools: [
-          { name: 'Claude / ChatGPT', url: 'https://claude.ai', bestFor: 'Upload a spreadsheet, ask for trends, outliers, and charts' },
-          { name: 'Copilot in Excel & Power BI', url: 'https://www.microsoft.com/microsoft-365/copilot', bestFor: 'Ask questions of the spreadsheets you already use' },
-          { name: 'Databricks Genie', url: 'https://www.databricks.com', bestFor: 'Plain-English questions over company data, with dashboards' },
-          { name: 'Snowflake Cortex', url: 'https://www.snowflake.com', bestFor: 'AI analysis built into your Snowflake warehouse' },
-        ],
-      },
-      {
-        category: 'Write code',
-        tools: [
-          { name: 'Claude Code', url: 'https://claude.com/product/claude-code', bestFor: 'An agent that builds and fixes whole projects from a description' },
-          { name: 'Google Antigravity', url: 'https://antigravity.google', bestFor: "Google's agent-first coding environment" },
-          { name: 'Cursor', url: 'https://cursor.com', bestFor: 'A code editor with AI built into every step' },
-        ],
-      },
-      {
-        category: 'Presentations',
-        tools: [
-          { name: 'Gamma', url: 'https://gamma.app', bestFor: 'An outline to a designed deck in about a minute' },
-          { name: 'Canva', url: 'https://www.canva.com', bestFor: 'Friendliest design tool for non-designers' },
-          { name: 'Beautiful.ai', url: 'https://www.beautiful.ai', bestFor: 'Slides that stay on-brand and auto-format' },
-        ],
-      },
-      {
-        category: 'Websites',
-        tools: [
-          { name: 'Claude', url: 'https://claude.ai', bestFor: 'A full portfolio site from one prompt — see the demo below' },
-          { name: 'Lovable', url: 'https://lovable.dev', bestFor: 'Describe an app or site, then refine it by chatting' },
-          { name: 'v0', url: 'https://v0.app', bestFor: 'Polished web interfaces from plain English' },
-          { name: 'Framer', url: 'https://www.framer.com', bestFor: 'Design-forward sites without touching code' },
-        ],
-      },
-      {
-        category: 'AI video',
-        tools: [
-          { name: 'HeyGen', url: 'https://www.heygen.com', bestFor: 'A talking avatar of you, from a script' },
-          { name: 'Synthesia', url: 'https://www.synthesia.io', bestFor: 'Training and explainer videos for work' },
-          { name: 'Google Veo', url: 'https://deepmind.google/models/veo/', bestFor: 'Cinematic clips generated from a prompt' },
-          { name: 'Sora', url: 'https://openai.com/sora', bestFor: 'Story-driven clips with sound' },
-          { name: 'Runway', url: 'https://runwayml.com', bestFor: 'Creative control over generated video' },
-          { name: 'Kling', url: 'https://klingai.com', bestFor: 'Realistic people and motion' },
-        ],
-      },
-      {
-        category: 'Edit video',
-        tools: [
-          { name: 'Descript', url: 'https://www.descript.com', bestFor: 'Edit a video by editing its transcript' },
-          { name: 'CapCut', url: 'https://www.capcut.com', bestFor: 'Auto-captions and text templates for social video' },
-        ],
-      },
-      {
-        category: 'Music',
-        tools: [
-          { name: 'Suno', url: 'https://suno.com', bestFor: 'A finished song, vocals included, from a description' },
-          { name: 'ElevenLabs Music', url: 'https://elevenlabs.io/music', bestFor: 'Trained on licensed music; cleared for commercial use' },
-          { name: 'Udio', url: 'https://www.udio.com', bestFor: 'Instrumentals — check its current terms before you use it' },
-        ],
-      },
-      {
-        category: 'Images',
-        tools: [
-          { name: 'Gemini / ChatGPT images', url: 'https://gemini.google.com', bestFor: 'Quick visuals for slides and posts, right in the chat' },
-          { name: 'Adobe Firefly', url: 'https://firefly.adobe.com', bestFor: 'Trained on licensed images; safer for commercial work' },
-          { name: 'Midjourney', url: 'https://www.midjourney.com', bestFor: 'Striking, artistic imagery' },
-        ],
-      },
-      {
-        category: 'Automate',
-        tools: [
-          { name: 'Make', url: 'https://www.make.com', bestFor: 'Visual drag-and-drop workflows that connect your apps' },
-          { name: 'n8n', url: 'https://n8n.io', bestFor: 'Open-source automations with AI steps; self-host for full control' },
-          { name: 'Zapier', url: 'https://zapier.com', bestFor: 'The simplest "when this happens, do that" automations' },
-        ],
+        title: 'Refine, don’t restart',
+        body: 'The first answer is a draft. Ask for changes by number ("make #2 shorter") and keep everything else.',
       },
     ],
     startHere:
-      'If you only try three: a chatbot for thinking (Claude, ChatGPT, or Gemini), Canva or Gamma for creating, and NotebookLM for learning.',
+      'New to all of this? Try three: a chatbot for thinking (Claude, ChatGPT, or Gemini), Canva or Gamma for creating, and NotebookLM for learning.',
+    toolkit: [
+      {
+        group: 'Think & analyze',
+        blurb: 'Write, research, and make sense of data.',
+        categories: [
+          {
+            category: 'Chat & write',
+            tools: [
+              { name: 'Claude', url: 'https://claude.ai', bestFor: 'Long documents, careful reasoning, writing in your voice' },
+              { name: 'ChatGPT', url: 'https://chatgpt.com', bestFor: 'All-rounder with images, voice, and data analysis' },
+              { name: 'Gemini', url: 'https://gemini.google.com', bestFor: 'Built into Gmail, Docs, and Google Workspace' },
+              { name: 'Microsoft Copilot', url: 'https://copilot.microsoft.com', bestFor: 'Word, Outlook, and Teams at Microsoft workplaces' },
+            ],
+          },
+          {
+            category: 'Research & learn',
+            tools: [
+              { name: 'NotebookLM', url: 'https://notebooklm.google.com', bestFor: 'Answers only from your own documents, with citations' },
+              { name: 'Perplexity', url: 'https://www.perplexity.ai', bestFor: 'Web search that shows where every answer came from' },
+            ],
+          },
+          {
+            category: 'Analyze data',
+            tools: [
+              { name: 'Claude / ChatGPT', url: 'https://claude.ai', bestFor: 'Upload a spreadsheet; ask for trends, outliers, and charts' },
+              { name: 'Copilot in Excel & Power BI', url: 'https://www.microsoft.com/microsoft-365/copilot', bestFor: 'Ask questions of the spreadsheets you already use' },
+              { name: 'Databricks Genie', url: 'https://www.databricks.com', bestFor: 'Plain-English questions over company data' },
+              { name: 'Snowflake Cortex', url: 'https://www.snowflake.com', bestFor: 'AI analysis built into your Snowflake warehouse' },
+            ],
+          },
+        ],
+      },
+      {
+        group: 'Build',
+        blurb: 'Make code, slides, websites, and automations.',
+        categories: [
+          {
+            category: 'Write code',
+            tools: [
+              { name: 'Claude Code', url: 'https://claude.com/product/claude-code', bestFor: 'An agent that builds and fixes whole projects' },
+              { name: 'Google Antigravity', url: 'https://antigravity.google', bestFor: "Google's agent-first coding environment" },
+              { name: 'Cursor', url: 'https://cursor.com', bestFor: 'A code editor with AI built into every step' },
+            ],
+          },
+          {
+            category: 'Presentations',
+            tools: [
+              { name: 'Gamma', url: 'https://gamma.app', bestFor: 'An outline to a designed deck in about a minute' },
+              { name: 'Canva', url: 'https://www.canva.com', bestFor: 'Friendliest design tool for non-designers' },
+              { name: 'Beautiful.ai', url: 'https://www.beautiful.ai', bestFor: 'Slides that stay on-brand and auto-format' },
+            ],
+          },
+          {
+            category: 'Websites',
+            tools: [
+              { name: 'Claude', url: 'https://claude.ai', bestFor: 'A full portfolio site from one prompt (see section 04)' },
+              { name: 'Lovable', url: 'https://lovable.dev', bestFor: 'Describe an app or site, then refine it by chatting' },
+              { name: 'v0', url: 'https://v0.app', bestFor: 'Polished web interfaces from plain English' },
+              { name: 'Framer', url: 'https://www.framer.com', bestFor: 'Design-forward sites without touching code' },
+            ],
+          },
+          {
+            category: 'Automate',
+            tools: [
+              { name: 'Make', url: 'https://www.make.com', bestFor: 'Visual drag-and-drop workflows that connect your apps' },
+              { name: 'n8n', url: 'https://n8n.io', bestFor: 'Open-source automations with AI steps; self-host for full control' },
+              { name: 'Zapier', url: 'https://zapier.com', bestFor: 'The simplest "when this happens, do that" automations' },
+            ],
+          },
+        ],
+      },
+      {
+        group: 'Create',
+        blurb: 'Generate video, music, and images.',
+        categories: [
+          {
+            category: 'AI video',
+            tools: [
+              { name: 'HeyGen', url: 'https://www.heygen.com', bestFor: 'A talking avatar of you, from a script' },
+              { name: 'Synthesia', url: 'https://www.synthesia.io', bestFor: 'Training and explainer videos for work' },
+              { name: 'Google Veo', url: 'https://deepmind.google/models/veo/', bestFor: 'Cinematic clips generated from a prompt' },
+              { name: 'Sora', url: 'https://openai.com/sora', bestFor: 'Story-driven clips with sound' },
+              { name: 'Runway', url: 'https://runwayml.com', bestFor: 'Creative control over generated video' },
+              { name: 'Kling', url: 'https://klingai.com', bestFor: 'Realistic people and motion' },
+            ],
+          },
+          {
+            category: 'Edit video',
+            tools: [
+              { name: 'Descript', url: 'https://www.descript.com', bestFor: 'Edit a video by editing its transcript' },
+              { name: 'CapCut', url: 'https://www.capcut.com', bestFor: 'Auto-captions and text templates for social video' },
+            ],
+          },
+          {
+            category: 'Music',
+            tools: [
+              { name: 'Suno', url: 'https://suno.com', bestFor: 'A finished song, vocals included, from a description' },
+              { name: 'ElevenLabs Music', url: 'https://elevenlabs.io/music', bestFor: 'Trained on licensed music; cleared for commercial use' },
+              { name: 'Udio', url: 'https://www.udio.com', bestFor: 'Instrumentals; check its current terms first' },
+            ],
+          },
+          {
+            category: 'Images',
+            tools: [
+              { name: 'Gemini / ChatGPT images', url: 'https://gemini.google.com', bestFor: 'Quick visuals for slides and posts, right in the chat' },
+              { name: 'Adobe Firefly', url: 'https://firefly.adobe.com', bestFor: 'Trained on licensed images; safer for commercial work' },
+              { name: 'Midjourney', url: 'https://www.midjourney.com', bestFor: 'Striking, artistic imagery' },
+            ],
+          },
+        ],
+      },
+    ],
+    wiselyIntro:
+      'At AT&T I analyzed 100K+ customer chats a week with AI. They were full of phone numbers and account details, so we masked personal data first, let AI classify, let code count, and had people verify. Four rules came out of that.',
     rules: [
       {
         title: 'Protect what is private',
@@ -274,19 +271,24 @@ export const TALKS: Talk[] = [
       },
       {
         title: 'Be transparent',
-        body: "If AI made it — especially a face, voice, or video of a person — say so. Never create AI content of a real person without their permission.",
+        body: 'If AI made it, especially a face, voice, or video of a person, say so. Never create AI content of a real person without their permission.',
       },
       {
         title: 'Own the output',
         body: 'AI writes the first draft. You are the editor, and your name is on the result.',
       },
     ],
+    demoSteps: [
+      'Copy the prompt and replace every [bracket] with your own details. Paste in your resume, too, if you like.',
+      'Paste it into claude.ai, answer its questions, and watch your site appear next to the chat.',
+      'Ask for changes one section at a time, then publish it using the free steps Claude gives you.',
+    ],
     demoPrompt: PORTFOLIO_PROMPT,
     followUps: [
       'Hero: make it bolder and give me three alternative headlines to choose from.',
       'Projects: rewrite #2 so the result comes first.',
       'Check the whole page for accessibility issues and fix them.',
-      'Add a "Speaking" section with one talk, and make it clickable to a detail page.',
+      'Add a section for my talks or events, where each one opens its own page.',
     ],
   },
 ];

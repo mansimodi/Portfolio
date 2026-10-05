@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react';
-import { getLenis } from '../hooks/useLenis';
+import { scrollToSection } from '../hooks/useLenis';
 
 interface SectionLabelProps {
   /** Anchor id of the section this label marks — doubles as its jump target
@@ -14,16 +14,7 @@ export default function SectionLabel({ id, label, variant = 'deep' }: SectionLab
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    const target = document.getElementById(id);
-    if (!target) return;
-
-    const lenis = getLenis();
-    if (lenis) {
-      lenis.scrollTo(target, { offset: -96 });
-    } else {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    window.history.replaceState(null, '', `#${id}`);
+    scrollToSection(id);
   };
 
   return (
