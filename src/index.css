@@ -2,40 +2,45 @@
 @import "tailwindcss";
 
 @theme {
-  /* Bathymetric Field Log — deep work zone (default theme) */
-  --color-background: #051822;
-  --color-surface: #0a2332;
-  --color-surface-elevated: #0f3044;
-  --color-foreground: #e8f1f5;
-  --color-muted: #8ba3b0;
-  --color-contour: #1e4d63;
-  --color-accent: #2a9d8f;
-  --color-accent-dim: #1f7369;
+  /* Golden Gate Fog — night (default theme): the bay after dark, fog lit
+     from below. Bridge orange carries every action; bay blue carries data. */
+  --color-background: #161a2e;
+  --color-surface: #1e2340;
+  --color-surface-elevated: #282e54;
+  --color-foreground: #eeebf7;
+  --color-muted: #b0b3cf;
+  --color-contour: #39406b;
+  --color-accent: #ff7a5c;
+  --color-accent-dim: #ff9b80;
+  --color-bay: #8fb4e0;
 
-  /* Sunlit surface — life zone (fixed regardless of light/dark toggle) */
-  --color-life: #f4ede4;
-  --color-life-surface: #fffbf7;
-  --color-life-foreground: #1a2e38;
-  --color-life-muted: #5c7280;
-  --color-life-accent: #e07a5f;
-  --color-life-accent-soft: #d4a574;
+  /* Golden hour — life zone (fixed regardless of light/dark toggle): the warm
+     apricot light that breaks through the fog, so Life reads as a shift in
+     time of day rather than a different site. */
+  --color-life: #fce4d6;
+  --color-life-surface: #fff6f0;
+  --color-life-foreground: #1d2340;
+  --color-life-muted: #5b4e63;
+  --color-life-accent: #b4321f;
+  --color-life-accent-soft: #e8875a;
 
   --font-sans: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Source Serif 4', ui-serif, Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* Light mode — "Surface Log". Same dive-log brand, read in daylight:
-   warm paper background, ink-navy type, a deeper teal accent for AA contrast. */
+/* Light mode — Golden Gate Fog by day: lavender-gray fog, ink-navy type,
+   International Orange deepened just enough to pass AA on every surface. */
 :root[data-theme='light'] {
-  --color-background: #f7f3ec;
-  --color-surface: #eee6d7;
+  --color-background: #f1eff7;
+  --color-surface: #e3def2;
   --color-surface-elevated: #ffffff;
-  --color-foreground: #16242c;
-  --color-muted: #5c6f78;
-  --color-contour: #c9b8a0;
-  --color-accent: #1f7369;
-  --color-accent-dim: #2a9d8f;
+  --color-foreground: #1d2340;
+  --color-muted: #4f5577;
+  --color-contour: #c9c2de;
+  --color-accent: #b4321f;
+  --color-accent-dim: #8f2718;
+  --color-bay: #1f4e79;
   color-scheme: light;
 }
 
@@ -110,7 +115,7 @@
   }
 
   .surface-transition {
-    background: linear-gradient(180deg, #0a2332 0%, #1a3a4a 35%, #f4ede4 100%);
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-life) 100%);
   }
 }
 

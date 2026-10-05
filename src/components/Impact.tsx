@@ -54,7 +54,7 @@ export default function Impact() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((stat) => (
             <div key={stat.label} className="border-l border-contour/50 pl-6 text-center sm:text-left">
-              <p className="font-serif text-4xl font-light tracking-tight text-foreground sm:text-5xl">
+              <p className="font-serif text-4xl font-light tracking-tight text-bay sm:text-5xl">
                 {stat.prefix}
                 <span data-count={stat.value}>0</span>
                 {stat.suffix}

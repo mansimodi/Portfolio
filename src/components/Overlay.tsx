@@ -52,7 +52,9 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
         style={{ opacity: s2Opacity, x: s2X }}
         className="fixed inset-0 flex flex-col justify-center px-8 md:px-24"
       >
-        <div className="max-w-2xl">
+        {/* Fog panel: these lines slide over the hero photo, where the
+            portrait's warm tones swallow orange and navy type. */}
+        <div className="max-w-2xl self-start rounded-3xl bg-background/80 p-6 backdrop-blur-md sm:p-8 md:p-10">
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">−80m // The Mission</p>
           <h2 className="font-serif text-3xl font-light leading-[1.1] text-foreground sm:text-5xl md:text-6xl">
             Building systems that <br />
@@ -65,7 +67,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
         style={{ opacity: s3Opacity, x: s3X }}
         className="fixed inset-0 flex flex-col items-end justify-center px-8 md:px-24"
       >
-        <div className="max-w-2xl text-right">
+        <div className="max-w-2xl text-right rounded-3xl bg-background/80 p-6 backdrop-blur-md sm:p-8 md:p-10">
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">−40m // The Approach</p>
           <h2 className="font-serif text-3xl font-light leading-[1.1] text-foreground sm:text-5xl md:text-6xl">
             Turning behavioral data <br />
