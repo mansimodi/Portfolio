@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 
@@ -31,11 +31,34 @@ function useNavShortcuts() {
   }, [navigate]);
 }
 
+/** True once the page has scrolled past the very top, so the fixed nav can
+ * pick up a backdrop and stay legible over whatever content slides under it
+ * (while staying fully transparent over the Home hero at rest). */
+function useScrolled(threshold = 12) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > threshold);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, [threshold]);
+
+  return scrolled;
+}
+
 export default function Navigation() {
   useNavShortcuts();
+  const scrolled = useScrolled();
 
   return (
-    <nav className="fixed top-0 left-0 z-[60] flex w-full items-start justify-between p-4 sm:p-6 md:p-8 pointer-events-none">
+    <nav
+      className={`fixed top-0 left-0 z-[60] flex w-full items-center justify-between border-b px-4 transition-[background-color,border-color,padding,backdrop-filter] duration-300 sm:px-6 md:px-8 ${
+        scrolled
+          ? 'border-contour/40 bg-background/85 py-3 backdrop-blur-md sm:py-4 md:py-5'
+          : 'pointer-events-none border-transparent bg-transparent py-4 sm:py-6 md:py-8'
+      }`}
+    >
       <div className="pointer-events-auto">
         <Link to="/" className="depth-label whitespace-nowrap text-muted hover:text-foreground transition-colors">
           M. Modi <span className="hidden sm:inline">// 2026</span>
