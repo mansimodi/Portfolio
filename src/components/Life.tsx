@@ -68,9 +68,9 @@ export default function Life() {
             viewport={{ once: true }}
             className="mb-16 max-w-2xl font-sans text-lg font-light leading-relaxed text-life-muted"
           >
-            Data science is what I do professionally. These are the things that keep me
-            curious, grounded, and human — the interests I am happy to talk about over
-            coffee as much as forecasting pipelines.
+            Product and data are what I do professionally. These are the things that keep
+            me curious, grounded, and human, and I'm as happy to talk about them over
+            coffee as about product roadmaps.
           </motion.p>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

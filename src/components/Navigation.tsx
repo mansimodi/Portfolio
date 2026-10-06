@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import { SITE_PAGES } from '../data/pages';
 
-const NAV_ITEMS = [
-  { key: 'h', label: 'Home', to: '/' },
-  { key: 'w', label: 'Work', to: '/work' },
-  { key: 's', label: 'Speaking', to: '/speaking' },
-  { key: 'l', label: 'Life', to: '/life' },
-  { key: 'c', label: 'Contact', to: '/contact' },
-] as const;
+const NAV_ITEMS = SITE_PAGES;
 
 /** Keyboard shortcuts for the nav — press the letter to jump straight to
  * that page. Kept invisible (no on-screen bracket notation) so the nav reads

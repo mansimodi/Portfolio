@@ -49,9 +49,9 @@ export default function Contact() {
               viewport={{ once: true }}
               className="mt-8 max-w-md font-sans text-lg font-light leading-relaxed text-muted"
             >
-              I'm always open to discussing data strategy, AI innovation, or potential
-              collaborations. Email is the best way to reach me — whether you have a
-              specific project in mind or just want to say hello.
+              I'm open to product management roles, especially on AI products, and
+              always happy to talk about data, AI, or something you're building. Email
+              is the best way to reach me.
             </motion.p>
           </div>
 

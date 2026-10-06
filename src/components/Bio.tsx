@@ -10,8 +10,8 @@ export default function Bio() {
 
         <TextReveal className="space-y-8">
           <h2 className="font-serif text-2xl font-light leading-snug tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-            I build data systems that{' '}
-            <span className="italic text-accent">make hard decisions easier.</span>
+            I find what customers struggle with,{' '}
+            <span className="italic text-accent">and turn it into what the product does next.</span>
           </h2>
         </TextReveal>
 
@@ -25,20 +25,20 @@ export default function Bio() {
           <div className="grid gap-12 md:grid-cols-2">
             <div className="space-y-6">
               <p className="font-sans text-lg font-light leading-relaxed text-muted">
-                Eight years in, I've learned that the best analysis isn't the most
-                sophisticated one — it's the one that actually changes what leadership
-                does next. I work at the intersection of machine learning, product
-                strategy, and storytelling, turning customer behavior, revenue signals,
-                and operational noise into clarity.
+                For eight years at AT&amp;T, I worked where customers, data, and product
+                meet. I analyzed 100K+ customer chats a week with AI, found the problems
+                behind them, and took product recommendations to leadership. I learned
+                that the best analysis isn't the most sophisticated one. It's the one
+                that changes what the product does next.
               </p>
             </div>
             <div className="space-y-6">
               <p className="font-sans text-lg font-light leading-relaxed text-muted">
-                My toolkit spans Python, SQL, Snowflake, and Power BI, with deep
-                experience in time series modeling, anomaly detection, and AI-driven
-                analytics. And when the model is done, I don't stop at the output — I
-                bring findings to AVPs, directors, and cross-functional teams in a
-                language that drives decisions, not just discussions.
+                Now I'm moving into product management, focused on AI products. I bring
+                a data scientist's rigor (Python, SQL, Snowflake, experimentation) and the
+                habits a product team needs: start with the customer's problem, get
+                cross-functional teams aligned (I led a 30+ stakeholder trial from idea
+                to launch), and prove the impact with numbers.
               </p>
             </div>
           </div>

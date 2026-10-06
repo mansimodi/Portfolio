@@ -5,6 +5,7 @@ import Navigation from './Navigation';
 import ScrollToTop from './ScrollToTop';
 import DiveBuddy from './DiveBuddy';
 import MagneticLink from './MagneticLink';
+import PageNav from './PageNav';
 
 export default function Layout() {
   useLenis();
@@ -31,6 +32,8 @@ export default function Layout() {
 
       <Outlet />
 
+      <PageNav />
+
       <footer className="border-t border-contour/30 bg-background px-4 py-12 md:px-24">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-12 md:flex-row">
           <div className="text-center md:text-left">
@@ -46,7 +49,7 @@ export default function Layout() {
               </h2>
             </MagneticLink>
             <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.5em] text-muted">
-              Lead Data Scientist // San Francisco Bay Area
+              Data Scientist → Product Manager // San Francisco Bay Area
             </p>
             <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-muted/60">
               © 2026 All Rights Reserved

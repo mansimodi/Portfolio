@@ -1,4 +1,6 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { gsap, useGSAP } from '../lib/gsap';
 
 interface Stat {
@@ -49,7 +51,7 @@ export default function Impact() {
     >
       <div className="mx-auto max-w-6xl">
         <p className="mb-10 font-mono text-[10px] uppercase tracking-[0.35em] text-accent">
-          Field Soundings
+          Results at AT&amp;T
         </p>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((stat) => (
@@ -64,6 +66,20 @@ export default function Impact() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-14 flex flex-col gap-4 border-t border-contour/40 pt-8 md:flex-row md:items-center md:justify-between">
+          <p className="max-w-xl font-sans text-base font-light leading-relaxed text-muted">
+            Each number started as a customer problem hiding in the data, and ended as a
+            change in how the product worked.
+          </p>
+          <Link
+            to="/work"
+            className="group inline-flex shrink-0 items-center gap-2 font-sans text-sm font-medium text-accent transition-colors hover:text-foreground"
+          >
+            See the projects behind these numbers
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
       </div>
     </section>

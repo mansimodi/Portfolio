@@ -37,7 +37,7 @@ export function scrollToSection(id: string) {
  * Drives the whole page with Lenis's inertia-smoothed scroll and keeps GSAP's
  * ScrollTrigger in sync every frame. Native `scroll` events still fire (Lenis
  * updates real scrollTop under the hood), so libraries that already listen to
- * window scroll — like Framer Motion's useScroll in ScrollyCanvas/Overlay —
+ * window scroll — like Framer Motion's useScroll and the nav's scroll backdrop —
  * keep working untouched.
  */
 export function useLenis() {

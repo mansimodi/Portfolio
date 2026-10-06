@@ -12,7 +12,7 @@ React 19, Vite 6, TypeScript, Tailwind CSS 4, Motion (Framer Motion), GSAP + Scr
 
 ## Users
 
-**Primary:** A mixed professional audience — hiring managers and recruiters evaluating Mansi for senior data science roles, plus potential collaborators and cross-functional partners (PMs, engineers, directors, AVPs).
+**Primary:** Hiring managers and recruiters evaluating Mansi for product management roles (especially AI products), plus potential collaborators and cross-functional partners (PMs, engineers, directors, AVPs).
 
 **Secondary:** Professional network contacts who already know Mansi's work and want a credible, up-to-date reference.
 
@@ -33,17 +33,17 @@ Mansi turns operational noise — customer behavior, revenue signals, call/chat 
 
 ## Operating Context
 
-- **Role:** Lead Data Scientist, San Francisco Bay Area.
+- **Role:** Data scientist turned product manager (former Lead Data Scientist at AT&T), San Francisco Bay Area. Open to product management roles.
 - **Experience:** Eight years; deep work at AT&T across AI analytics, forecasting, anomaly detection, and strategic routing.
 - **Toolkit:** Python, SQL, Snowflake, Power BI, time series modeling, anomaly detection, AI-driven analytics; modern AI tools (Gemini, Claude, ChatGPT, and related platforms listed in site copy).
-- **Site sections (current):** Scroll-driven canvas hero, Bio, Impact stats, Contact, Skills, Awards, Projects, Footer.
+- **Site sections (current):** Static hero with headshot and calls to action, Bio, Impact stats with a link to the work behind them, Work (Projects, Skills, Awards), Speaking, Life, Contact; every page ends with previous/next links.
 - **Site sections (planned):** A "Life / Beyond Work" section covering fitness, travel, crochet, painting, and underwater hockey — to be added during redesign.
 - **Contact channels on site:** Email (primary CTA), LinkedIn (secondary).
 
 ## Capabilities and Constraints
 
 **Confirmed functionality:**
-- Canvas-based scrollytelling hero with image sequence preload.
+- Static hero with headshot (`/public/headshot.jpg`) and primary/secondary calls to action.
 - Scroll progress indicator, smooth scroll (Lenis), text reveal animations, magnetic links, animated impact counters.
 - Project cards, skills grid, awards, contact cards.
 
@@ -66,7 +66,7 @@ Mansi turns operational noise — customer behavior, revenue signals, call/chat 
 ## Brand Commitments
 
 - **Name:** Mansi Modi (display: *Mansi* with italic *Modi* in hero/footer per existing pattern).
-- **Title:** Lead Data Scientist.
+- **Title:** Data Scientist → Product Manager (AI products).
 - **Location:** San Francisco Bay Area.
 - **Voice:** Professional, precise, human — analytical without being cold; confident without hype.
 - **Primary CTA:** Email at `mansimodi90@gmail.com`.
@@ -77,7 +77,7 @@ Mansi turns operational noise — customer behavior, revenue signals, call/chat 
 
 **Real content in repository:**
 - Bio copy, impact metrics (100K+ transcripts, 10% resolve rate, 75% forecast accuracy, $2M savings), five AT&T project case studies, two AT&T awards, skills lists, contact details.
-- Canvas image sequence at `/public/sequence/` (120 frames).
+- Professional headshot at `/public/headshot.jpg`.
 - Project placeholder images from Unsplash (not personal photography — replace with real assets when available).
 
 **Absences — do not fabricate:**
