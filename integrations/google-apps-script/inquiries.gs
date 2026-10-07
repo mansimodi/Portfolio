@@ -21,7 +21,7 @@ const CONFIG = {
   MIN_FILL_MS: 3000,
   // Gmail allows a personal account about 100 recipients a day. Past this many inquiries in a
   // day, keep logging them but stop sending email, so the form can't be used to spam strangers.
-  DAILY_EMAIL_CAP: 40,
+  DAILY_EMAIL_CAP: 20,
 };
 
 const HEADERS = ['Received', 'Name', 'Email', 'Reason', 'Phone', 'Message', 'Page', 'Status', 'Notes'];
@@ -113,17 +113,18 @@ function notifyOwner(inquiry) {
   });
 }
 
+/**
+ * The auto-reply goes to whatever address was typed into the form, so it must not carry
+ * anything the sender wrote: otherwise a stranger could use this script to send their own
+ * text (a scam link, say) from your Gmail to anyone. Fixed wording only; the greeting uses
+ * the first name only when it looks like a real name.
+ */
 function autoReply(inquiry) {
-  const firstName = inquiry.name.split(' ')[0];
+  const greetingName = safeFirstName(inquiry.name);
   const text = [
-    'Hi ' + firstName + ',',
+    'Hi ' + greetingName + ',',
     '',
     "Thanks for reaching out through my website. I've received your inquiry and will get back to you within the next 24–48 hours.",
-    '',
-    'For your records, here is what you sent:',
-    '',
-    'Reason: ' + inquiry.reason,
-    inquiry.message,
     '',
     'Best,',
     CONFIG.OWNER_NAME,
@@ -133,13 +134,8 @@ function autoReply(inquiry) {
 
   const html =
     '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#1d2340;max-width:560px">' +
-    '<p>Hi ' + escapeHtml(firstName) + ',</p>' +
+    '<p>Hi ' + escapeHtml(greetingName) + ',</p>' +
     "<p>Thanks for reaching out through my website. I've received your inquiry and will get back to you within the next <b>24–48 hours</b>.</p>" +
-    '<p style="margin-top:24px;color:#4f5577">For your records, here is what you sent:</p>' +
-    '<div style="border-left:3px solid #b4321f;padding:4px 0 4px 14px;color:#4f5577">' +
-    '<p style="margin:0 0 8px"><b>Reason:</b> ' + escapeHtml(inquiry.reason) + '</p>' +
-    '<p style="margin:0;white-space:pre-wrap">' + escapeHtml(inquiry.message) + '</p>' +
-    '</div>' +
     '<p style="margin-top:24px">Best,<br>' + escapeHtml(CONFIG.OWNER_NAME) + '<br>' +
     '<span style="color:#4f5577">Data scientist turned product manager</span><br>' +
     '<a href="' + CONFIG.SITE_URL + '" style="color:#b4321f">' + CONFIG.SITE_URL.replace('https://', '') + '</a> · ' +
@@ -150,10 +146,16 @@ function autoReply(inquiry) {
     to: inquiry.email,
     replyTo: CONFIG.OWNER_EMAIL,
     name: CONFIG.OWNER_NAME,
-    subject: 'Thanks for reaching out, ' + firstName,
+    subject: 'Thanks for reaching out',
     body: text,
     htmlBody: html,
   });
+}
+
+/** First name if it looks like one (letters, spaces, ' . -; up to 40 characters), else "there". */
+function safeFirstName(name) {
+  const first = String(name || '').trim().split(/\s+/)[0] || '';
+  return /^[\p{L}][\p{L}'.-]{0,39}$/u.test(first) ? first : 'there';
 }
 
 function withinDailyCap() {

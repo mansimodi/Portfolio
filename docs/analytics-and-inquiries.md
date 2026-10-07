@@ -12,7 +12,7 @@ When someone submits the form, a Google Apps Script attached to a Google Sheet:
 - emails you at `mansimodi90+portfolio@gmail.com` (lands in your normal inbox; hit Reply to answer them)
 - sends them an auto-reply from your Gmail: *"I've received your inquiry and will get back to you within the next 24–48 hours."*
 
-Spam protection is built in: a hidden trap field, a "filled in too fast" check, a one-minute cooldown per email address, and a cap of 40 emails a day (past that, inquiries are still logged but no emails are sent).
+Spam protection is built in: a hidden trap field, a "filled in too fast" check, a one-minute cooldown per email address, and a cap of 20 emails a day (past that, inquiries are still logged but no emails are sent). The auto-reply uses fixed wording only, so nobody can use your form to send their own text from your Gmail.
 
 **Steps** (do these signed in as **mansimodi90@gmail.com**; auto-replies come from whichever account deploys the script):
 

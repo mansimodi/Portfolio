@@ -96,7 +96,8 @@ export default function InquiryForm() {
   const firstName = form.name.trim().split(' ')[0] || 'there';
 
   return (
-    <div className="rounded-2xl border border-contour/30 bg-surface/50 p-6 sm:p-8">
+    // data-clarity-mask: keep visitors' names, emails, and messages out of Clarity recordings.
+    <div data-clarity-mask="True" className="rounded-2xl border border-contour/30 bg-surface/50 p-6 sm:p-8">
       <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.35em] text-accent">Send a note</p>
       <h3 className="mb-6 font-serif text-xl font-light text-foreground">Submit an inquiry</h3>
 
