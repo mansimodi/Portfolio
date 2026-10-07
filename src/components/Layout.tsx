@@ -54,6 +54,10 @@ export default function Layout() {
             <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-muted/60">
               © 2026 All Rights Reserved
             </p>
+            <p className="mt-3 max-w-sm font-sans text-[11px] leading-relaxed text-muted/70">
+              This site uses Vercel Analytics and Microsoft Clarity to understand which pages
+              are useful. Clarity uses cookies; it doesn't record what you type.
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
