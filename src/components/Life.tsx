@@ -15,7 +15,7 @@ export const HOBBIES = [
     title: 'Fitness',
     tag: 'Routine',
     description:
-      'Strength training and staying active — the discipline of showing up consistently, applied outside the office.',
+      'Yoga, strength training, and staying active: the discipline of showing up consistently, applied outside the office.',
     image: '/life/fitness.jpg',
     alt: 'Mansi in a side-plank yoga pose on a mat in a sunlit park',
   },
