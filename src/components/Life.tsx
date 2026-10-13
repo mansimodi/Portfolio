@@ -8,24 +8,24 @@ export const HOBBIES = [
     tag: 'Signature',
     description:
       'Competitive pool sport that demands strategy, breath control, and reading the field three dimensions at once — not unlike finding signal in noisy data.',
-    image:
-      'https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1200&auto=format&fit=crop',
+    image: '/life/underwater-hockey.jpg',
+    alt: 'Mansi playing underwater hockey at the 2022 Underwater Hockey Nationals in Thornton, Colorado (photo © Yori V. Huynh)',
   },
   {
     title: 'Fitness',
     tag: 'Routine',
     description:
       'Strength training and staying active — the discipline of showing up consistently, applied outside the office.',
-    image:
-      'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1200&auto=format&fit=crop',
+    image: '/life/fitness.jpg',
+    alt: 'Mansi in a side-plank yoga pose on a mat in a sunlit park',
   },
   {
     title: 'Travel',
     tag: 'Explore',
     description:
       'New cities, new coastlines, new perspectives. Travel resets how I see patterns — in places and in people.',
-    image:
-      'https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1200&auto=format&fit=crop',
+    image: '/life/travel.jpg',
+    alt: 'Mansi in a yellow knit hat looking up at the northern lights over a snowy pine forest',
   },
   {
     title: 'Crochet',
@@ -88,7 +88,7 @@ export default function Life() {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={hobby.image}
-                    alt={'alt' in hobby ? hobby.alt : hobby.title}
+                    alt={hobby.alt}
                     referrerPolicy="no-referrer"
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
